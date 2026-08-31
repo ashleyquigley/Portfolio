@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#F4C9F3"/>
+  <g fill="none" stroke="#0A0A0A" stroke-width="3" opacity="0.35">
+    <circle cx="200" cy="160" r="60"/>
+    <path d="M120 320 Q200 250 280 320" />
+  </g>
+  <text x="200" y="360" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#0A0A0A" text-anchor="middle">REPLACE: foster cat photo</text>
+</svg>

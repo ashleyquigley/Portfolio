@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#D9DEFF"/>
+  <rect x="60" y="60" width="680" height="380" rx="24" fill="#FFFFFF" opacity="0.6"/>
+  <rect x="100" y="100" width="260" height="140" rx="16" fill="#B1FF9E"/>
+  <rect x="380" y="100" width="260" height="140" rx="16" fill="#B1FF9E" opacity="0.6"/>
+  <rect x="100" y="260" width="540" height="24" rx="12" fill="#0A0A0A" opacity="0.15"/>
+  <rect x="100" y="296" width="380" height="24" rx="12" fill="#0A0A0A" opacity="0.1"/>
+  <text x="400" y="420" font-family="Arial, sans-serif" font-size="20" font-weight="700" fill="#0A0A0A" text-anchor="middle">REPLACE: QuickBooks pricing cards screenshot</text>
+</svg>

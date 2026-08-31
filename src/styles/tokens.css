@@ -1,0 +1,92 @@
+/*
+  Design tokens — the single source of truth for color, type, spacing,
+  radius and motion. Every component reads from these custom properties
+  rather than hard-coding values, the same pattern called out in the
+  Fetch job post under "design system (components, tokens, accessibility
+  patterns)".
+
+  Palette is a deliberate homage to Fetch's product (soft lavender,
+  candy pink, neon mint, high-contrast black) rendered in different,
+  freely-licensed type — Space Grotesk / Inter — rather than their
+  actual brand fonts.
+*/
+
+:root {
+  /* Color — base surfaces */
+  --color-bg: #eef1ff;
+  --color-bg-alt: #f7ecfb;
+  --color-surface: #ffffff;
+  --color-ink: #0a0a0a;
+  --color-ink-muted: #4a4a58;
+
+  /* Color — accents */
+  --color-mint: #b1ff9e;
+  --color-mint-ink: #0a0a0a;
+  --color-pink: #f4c9f3;
+  --color-lavender: #d9deff;
+  --color-lilac: #e7c7ee;
+
+  /* Color — borders / states */
+  --color-border: rgba(10, 10, 10, 0.08);
+  --color-focus-ring: #0a0a0a;
+
+  /* Type */
+  --font-display: 'Space Grotesk', 'Archivo Black', system-ui, sans-serif;
+  --font-body: 'Inter', -apple-system, 'system-ui', sans-serif;
+
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-base: 1.0625rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.75rem;
+  --text-2xl: 2.5rem;
+  --text-3xl: clamp(2.5rem, 5vw + 1rem, 4.25rem);
+
+  --leading-tight: 1.05;
+  --leading-snug: 1.3;
+  --leading-normal: 1.6;
+
+  /* Spacing scale (4px base) */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+  --space-9: 7rem;
+
+  /* Radius — pill-first, matching Fetch's soft, rounded language */
+  --radius-sm: 0.75rem;
+  --radius-md: 1.25rem;
+  --radius-lg: 2rem;
+  --radius-pill: 999px;
+
+  /* Shadow */
+  --shadow-card: 0 1px 2px rgba(10, 10, 10, 0.04), 0 12px 32px rgba(10, 10, 10, 0.08);
+  --shadow-card-hover: 0 2px 4px rgba(10, 10, 10, 0.06), 0 20px 48px rgba(10, 10, 10, 0.12);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 150ms;
+  --duration-base: 240ms;
+
+  /* Layout */
+  --content-max: 72rem;
+  --content-padding: clamp(1.25rem, 5vw, 3rem);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #14131f;
+    --color-bg-alt: #1c1626;
+    --color-surface: #201d2e;
+    --color-ink: #f5f5f7;
+    --color-ink-muted: #b9b8c6;
+    --color-border: rgba(245, 245, 247, 0.1);
+    --color-focus-ring: #f5f5f7;
+    --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 32px rgba(0, 0, 0, 0.35);
+    --shadow-card-hover: 0 2px 4px rgba(0, 0, 0, 0.35), 0 20px 48px rgba(0, 0, 0, 0.45);
+  }
+}
