@@ -8,6 +8,18 @@
   margin: 0 auto;
 }
 
+.sectionPill {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: var(--text-sm);
+  color: var(--color-ink);
+  background: var(--color-surface);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  margin-bottom: var(--space-4);
+}
+
 .heading {
   font-size: var(--text-2xl);
   font-weight: 700;
@@ -17,15 +29,40 @@
 .grid {
   margin-top: var(--space-7);
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-5);
 }
 
+@media (min-width: 40rem) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.revealCard {
+  height: 100%;
+}
+
 .card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   background: var(--color-surface);
   border-radius: var(--radius-md);
   padding: var(--space-5);
   box-shadow: var(--shadow-card);
+  transition: transform var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.cardEmoji {
+  display: inline-block;
+  font-size: var(--text-xl);
+  margin-bottom: var(--space-2);
 }
 
 .cardTitle {

@@ -1,0 +1,120 @@
+.section {
+  padding: var(--space-8) var(--content-padding);
+  background: var(--color-bg);
+}
+
+.inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+
+.sectionPill {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: var(--text-sm);
+  color: var(--color-pink-pop-ink);
+  background: var(--color-pink-pop);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  margin-bottom: var(--space-4);
+}
+
+.heading {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  max-width: 32ch;
+}
+
+.body {
+  margin-top: var(--space-3);
+  color: var(--color-ink-muted);
+  max-width: 46ch;
+}
+
+.list {
+  margin-top: var(--space-7);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.row {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+}
+
+.rowButton {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-5);
+  text-align: left;
+  color: var(--color-ink);
+}
+
+.rowLabel {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-base);
+}
+
+.chevron {
+  flex-shrink: 0;
+  font-size: var(--text-xl);
+  line-height: 1;
+  color: var(--color-pink-pop);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.row[data-open='true'] .chevron {
+  transform: rotate(180deg);
+}
+
+.panelWrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--duration-base) var(--ease-out);
+}
+
+.row[data-open='true'] .panelWrap {
+  grid-template-rows: 1fr;
+}
+
+.panelInner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.chips {
+  margin: 0;
+  padding: 0 var(--space-5) var(--space-5);
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.chip {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-ink);
+  background: var(--color-bg-alt);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panelWrap,
+  .chevron {
+    transition: none;
+  }
+}

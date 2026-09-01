@@ -1,4 +1,6 @@
 .section {
+  position: relative;
+  overflow: hidden;
   padding: var(--space-8) var(--content-padding) var(--space-9);
   background: var(--color-bg);
 }
@@ -22,6 +24,18 @@
     grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
     align-items: center;
   }
+}
+
+.sectionPill {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: var(--text-sm);
+  color: var(--color-pink-pop-ink);
+  background: var(--color-pink-pop);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  margin-bottom: var(--space-4);
 }
 
 .heading {
@@ -78,6 +92,11 @@
   width: 100%;
   aspect-ratio: 1;
   object-fit: cover;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.petCard:hover .petImg {
+  transform: scale(1.08);
 }
 
 .petCaption {

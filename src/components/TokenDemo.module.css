@@ -8,6 +8,18 @@
   margin: 0 auto;
 }
 
+.sectionPill {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: var(--text-sm);
+  color: var(--color-pink-pop-ink);
+  background: var(--color-pink-pop);
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  margin-bottom: var(--space-4);
+}
+
 .heading {
   font-size: var(--text-2xl);
   font-weight: 700;

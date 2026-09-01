@@ -2,7 +2,8 @@ import { useRef, useState } from 'react'
 import styles from './TokenDemo.module.css'
 
 const swatches = [
-  { name: 'Ink', varName: '--color-ink', hex: '#0A0A0A' },
+  { name: 'Ink', varName: '--color-ink', hex: '#14132B' },
+  { name: 'Hot Pink', varName: '--color-pink-pop', hex: '#FF3D9A' },
   { name: 'Mint', varName: '--color-mint', hex: '#B1FF9E' },
   { name: 'Pink', varName: '--color-pink', hex: '#F4C9F3' },
   { name: 'Lavender', varName: '--color-lavender', hex: '#D9DEFF' },
@@ -36,13 +37,14 @@ export function TokenDemo() {
   return (
     <section className={styles.section} id="tokens" aria-labelledby="tokens-heading">
       <div className={styles.inner}>
+        <span className={styles.sectionPill}>🎨 The system</span>
         <h2 className={styles.heading} id="tokens-heading">
           A design system starts with tokens
         </h2>
         <p className={styles.body}>
           The job post calls out evolving a design system — components, tokens, accessibility
           patterns. Here's what that looks like in practice: this whole page reads its colours,
-          spacing and radii from one token file. Try it.
+          spacing and radii from one token file. Try it 👇
         </p>
 
         <div className={styles.panel}>

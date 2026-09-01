@@ -2,7 +2,7 @@ import { CaseStudies } from './components/CaseStudies'
 import { Footer } from './components/Footer'
 import { Hero } from './components/Hero'
 import { HowIWork } from './components/HowIWork'
-import { TokenDemo } from './components/TokenDemo'
+import { Skills } from './components/Skills'
 
 function App() {
   return (
@@ -11,8 +11,8 @@ function App() {
         Skip to work
       </a>
       <Hero />
-      <TokenDemo />
       <CaseStudies />
+      <Skills />
       <HowIWork />
       <Footer />
     </>
