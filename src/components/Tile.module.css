@@ -1,0 +1,21 @@
+.tile {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transition: background-color var(--duration-base) var(--ease-out);
+}
+
+.shape {
+  position: absolute;
+  inset: -0.5px; /* bleed past the edge so sub-pixel seams never show */
+  width: calc(100% + 1px);
+  height: calc(100% + 1px);
+  transform: rotate(calc(var(--rot) * 90deg));
+  transition: transform 700ms var(--ease-spring);
+  will-change: transform;
+}
+
+.shape path {
+  transition: fill var(--duration-base) var(--ease-out);
+}

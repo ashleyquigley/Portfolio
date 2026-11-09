@@ -1,6 +1,8 @@
 .section {
   padding: var(--space-8) var(--content-padding);
-  background: linear-gradient(180deg, var(--color-lilac) 0%, var(--color-pink) 100%);
+  background: var(--art-ink);
+  color: var(--art-cream);
+  --muted: color-mix(in srgb, var(--art-cream) 72%, transparent);
 }
 
 .inner {
@@ -8,26 +10,12 @@
   margin: 0 auto;
 }
 
-.sectionPill {
-  display: inline-flex;
-  align-items: center;
-  font-weight: 700;
-  font-size: var(--text-sm);
-  color: var(--color-ink);
-  background: var(--color-surface);
-  padding: var(--space-2) var(--space-4);
-  border-radius: var(--radius-pill);
-  margin-bottom: var(--space-4);
-}
-
-.heading {
-  font-size: var(--text-2xl);
-  font-weight: 700;
-  max-width: 30ch;
+/* Section heads sit on a dark band in both themes, so recolour the shared header text. */
+.section :is(h2, p) {
+  color: var(--art-cream);
 }
 
 .grid {
-  margin-top: var(--space-7);
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: var(--space-5);
@@ -44,35 +32,76 @@
 }
 
 .card {
+  --tone: var(--art-red);
+  position: relative;
   height: 100%;
+  min-height: 17rem;
   display: flex;
   flex-direction: column;
-  background: var(--color-surface);
-  border-radius: var(--radius-md);
-  padding: var(--space-5);
-  box-shadow: var(--shadow-card);
-  transition: transform var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out);
+  padding: var(--space-6);
+  border: 2px solid var(--art-cream);
+  overflow: hidden;
+  isolation: isolate;
+  transition: color var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-spring);
+}
+
+.card[data-tone='blue'] { --tone: var(--art-blue); }
+.card[data-tone='amber'] { --tone: var(--art-amber); }
+.card[data-tone='ink'] { --tone: var(--art-cream); }
+
+/* Quarter-disc that blooms to fill the card on hover. */
+.shape {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  width: 5.5rem;
+  height: 5.5rem;
+  background: var(--tone);
+  border-radius: 0 0 0 100%;
+  transform-origin: top right;
+  transition: transform 650ms var(--ease-out);
+}
+
+.card:hover .shape,
+.card:focus-within .shape {
+  transform: scale(5);
 }
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-card-hover);
 }
 
-.cardEmoji {
-  display: inline-block;
-  font-size: var(--text-xl);
-  margin-bottom: var(--space-2);
+.card:hover .cardTitle,
+.card:hover .cardBody,
+.card:hover .num {
+  color: var(--art-ink);
+}
+
+.num {
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  color: var(--art-ink);
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  font-weight: 500;
 }
 
 .cardTitle {
-  font-size: var(--text-base);
+  margin-top: auto;
+  font-size: clamp(1.5rem, 2.2vw, 2rem);
   font-weight: 700;
+  letter-spacing: -0.03em;
+  padding-top: var(--space-7);
+  transition: color var(--duration-base) var(--ease-out);
 }
 
 .cardBody {
-  margin-top: var(--space-2);
+  margin-top: var(--space-3);
   font-size: var(--text-sm);
-  color: var(--color-ink-muted);
+  color: var(--muted);
   line-height: var(--leading-normal);
+  transition: color var(--duration-base) var(--ease-out);
 }

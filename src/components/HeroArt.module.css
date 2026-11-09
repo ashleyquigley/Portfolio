@@ -1,0 +1,93 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-4);
+}
+
+.board {
+  --rx: 0deg;
+  --ry: 0deg;
+  --mx: 50%;
+  --my: 50%;
+  position: relative;
+  width: 100%;
+  max-width: 34rem;
+  aspect-ratio: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  border: 3px solid var(--color-border-strong);
+  box-shadow: var(--shadow-offset);
+  cursor: pointer;
+  background: var(--art-ink);
+  transform: perspective(1100px) rotateX(var(--rx)) rotateY(var(--ry));
+  transition: transform 500ms var(--ease-out), box-shadow var(--duration-base) var(--ease-out);
+  touch-action: manipulation;
+}
+
+.board[data-active='true'] {
+  box-shadow: var(--shadow-offset-hover);
+  transition: transform 120ms linear, box-shadow var(--duration-base) var(--ease-out);
+}
+
+.cell {
+  min-width: 0;
+  min-height: 0;
+}
+
+/* Soft highlight that tracks the pointer across the board. */
+.sheen {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(circle at var(--mx) var(--my), rgb(255 255 255 / 0.28), transparent 42%);
+  mix-blend-mode: soft-light;
+  transition: opacity var(--duration-base) var(--ease-out);
+}
+
+.board[data-active='true'] .sheen {
+  opacity: 1;
+}
+
+.shuffle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: transparent;
+  border: 1.5px solid var(--color-border-strong);
+  border-radius: var(--radius-pill);
+  padding: var(--space-2) var(--space-4);
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out);
+}
+
+.shuffle:hover {
+  background: var(--color-ink);
+  color: var(--color-inverse);
+}
+
+.shuffle span {
+  display: inline-block;
+  transition: transform var(--duration-slow) var(--ease-spring);
+}
+
+.shuffle:hover span {
+  transform: rotate(360deg);
+}
+
+@media (max-width: 59.99rem) {
+  .wrap {
+    align-items: stretch;
+  }
+
+  .board {
+    max-width: none;
+  }
+}

@@ -1,0 +1,45 @@
+.toggle {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-border-strong);
+  background: transparent;
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease-out), transform var(--duration-base) var(--ease-spring);
+}
+
+.toggle:hover {
+  background: var(--art-amber);
+  transform: rotate(25deg) scale(1.06);
+}
+
+.toggle:hover .body,
+.toggle:hover .rays {
+  fill: var(--art-ink);
+  stroke: var(--art-ink);
+}
+
+.icon {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.body {
+  fill: var(--color-ink);
+  transition: r var(--duration-base) var(--ease-out), fill var(--duration-fast);
+}
+
+.bite {
+  transition: cx var(--duration-base) var(--ease-out), cy var(--duration-base) var(--ease-out);
+}
+
+.rays {
+  stroke: var(--color-ink);
+  stroke-width: 2;
+  stroke-linecap: round;
+  transition: opacity var(--duration-base) var(--ease-out);
+  transform-origin: center;
+}
