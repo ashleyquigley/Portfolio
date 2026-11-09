@@ -1,0 +1,14 @@
+.bar {
+  --progress: 0;
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 5px;
+  z-index: 150;
+  transform-origin: left;
+  transform: scaleX(var(--progress));
+  background: linear-gradient(90deg, var(--art-red) 0 25%, var(--art-amber) 25% 50%, var(--art-blue) 50% 75%, var(--art-ink) 75%);
+}
+
+:root[data-theme='dark'] .bar {
+  background: linear-gradient(90deg, var(--art-red) 0 25%, var(--art-amber) 25% 50%, var(--art-blue) 50% 75%, var(--art-cream) 75%);
+}

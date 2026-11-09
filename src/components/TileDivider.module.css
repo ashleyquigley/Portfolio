@@ -1,0 +1,40 @@
+.divider {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  padding: var(--space-6) 0;
+}
+
+.tile {
+  flex: 1 1 0;
+  aspect-ratio: 1;
+  min-width: 0;
+  background: var(--c);
+  border-radius: 100% 0 0 0;
+  transform: rotate(0deg);
+}
+
+@supports (animation-timeline: view()) {
+  .tile {
+    animation: spin linear both;
+    animation-timeline: view();
+    animation-range: entry calc(var(--i) * 2%) cover 55%;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(-180deg) scale(0.2);
+      border-radius: 100% 100% 100% 100%;
+    }
+    to {
+      transform: rotate(0deg) scale(1);
+      border-radius: 100% 0 0 0;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tile {
+    animation: none;
+  }
+}

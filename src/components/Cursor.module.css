@@ -1,0 +1,61 @@
+.ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 250;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--duration-base);
+}
+
+.ring[data-visible='true'] {
+  opacity: 1;
+}
+
+/* Centred on the pointer; blends against whatever's underneath. */
+.inner {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  margin: -1.125rem 0 0 -1.125rem;
+  border: 1.5px solid #fff;
+  border-radius: 50%;
+  mix-blend-mode: difference;
+  transition: width var(--duration-base) var(--ease-spring), height var(--duration-base) var(--ease-spring),
+    margin var(--duration-base) var(--ease-spring), background var(--duration-fast);
+}
+
+.ring[data-state='link'] .inner {
+  width: 3.5rem;
+  height: 3.5rem;
+  margin: -1.75rem 0 0 -1.75rem;
+  background: #fff;
+}
+
+.ring[data-state='label'] .inner {
+  width: 5rem;
+  height: 5rem;
+  margin: -2.5rem 0 0 -2.5rem;
+  background: #fff;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #000;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .ring {
+    display: none;
+  }
+}

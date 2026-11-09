@@ -6,9 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Ashley Quigley — frontend engineer. Case studies and a working React/TypeScript component demo, built for the Fetch Front-end Engineer application."
+      content="Ashley Quigley — frontend engineer with 10+ years shipping scalable, accessible web applications. Case studies, plus an interactive pattern lab built in React and TypeScript."
     />
+    <meta name="theme-color" content="#f5eee0" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#17160f" media="(prefers-color-scheme: dark)" />
     <title>Ashley Quigley — Frontend Engineer</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=DM+Sans:opsz,wght@9..40,400..700&family=JetBrains+Mono:wght@400;500&display=swap"
+    />
+
+    <!-- Resolve the theme BEFORE first paint so there's no light→dark flash. -->
+    <script>
+      try {
+        var t = localStorage.getItem('theme')
+        if (t !== 'light' && t !== 'dark') {
+          t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        }
+        document.documentElement.dataset.theme = t
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>

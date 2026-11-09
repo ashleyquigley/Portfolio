@@ -1,0 +1,36 @@
+.split {
+  display: inline;
+}
+
+.word {
+  display: inline-block;
+  white-space: nowrap;
+  margin-right: 0.22em;
+}
+
+.maskLetter {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.12em; /* room for descenders inside the mask */
+  margin-bottom: -0.12em;
+}
+
+.letter {
+  display: inline-block;
+  transform: translateY(110%) rotate(8deg);
+  animation: rise 900ms var(--ease-out) forwards;
+  animation-delay: calc(var(--i) * 45ms + 150ms);
+}
+
+@keyframes rise {
+  to {
+    transform: translateY(0) rotate(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .letter {
+    transform: none;
+  }
+}

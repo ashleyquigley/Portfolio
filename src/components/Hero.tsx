@@ -1,88 +1,79 @@
-import { PawAccent } from './PawAccent'
+import { useEffect, useState } from 'react'
+import { HeroArt } from './HeroArt'
+import { SplitText } from './SplitText'
 import styles from './Hero.module.css'
+
+const WORDS = ['scalable', 'accessible', 'fast', 'playful']
+
+/** Cycles a word on a timer; the animated copy is hidden from AT and a static list is read instead. */
+function RotatingWord() {
+  const [i, setI] = useState(0)
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const id = window.setInterval(() => setI((n) => (n + 1) % WORDS.length), 2400)
+    return () => window.clearInterval(id)
+  }, [])
+
+  return (
+    <>
+      <span className="visually-hidden">{WORDS.slice(0, -1).join(', ')} and {WORDS.at(-1)}</span>
+      <span className={styles.rotator} aria-hidden="true">
+        <span className={styles.rotatorWord} key={WORDS[i]}>
+          {WORDS[i]}
+        </span>
+      </span>
+    </>
+  )
+}
 
 export function Hero() {
   return (
-    <header className={styles.hero}>
-      <div className={styles.card}>
-        <PawAccent size={44} color="var(--color-pink-pop)" top="6%" right="4%" rotate={18} />
-        <PawAccent size={28} color="var(--color-lilac)" bottom="8%" left="3%" rotate={-24} delay={800} />
-
+    <header className={styles.hero} id="top">
+      <div className={styles.inner}>
         <div className={styles.textCol}>
-          <span className={styles.eyebrow}>Frontend Software Engineer</span>
+          <p className={styles.eyebrow}>
+            <span className={styles.dot} aria-hidden="true" />
+            Frontend Software Engineer · Open to work
+          </p>
+
           <h1 className={styles.title}>
-            Hello, I'm Ashley
+            <SplitText text="Ashley" />
+            <br />
+            <SplitText text="Quigley" baseDelay={6} />
           </h1>
 
-          <ul className={styles.bullets}>
+          <p className={styles.lede}>
+            I build interfaces that are <RotatingWord /> — and take the time to make them a little bit
+            beautiful.
+          </p>
+
+          <ul className={styles.facts}>
             <li>
-              🚀 <strong>10+ years</strong> of experience shipping web applications
+              <span className={styles.factKey}>10+ yrs</span>
+              <span>shipping web applications</span>
             </li>
             <li>
-              🌏 <strong>Timezone ninja</strong> - experience collaborating async with teams around the world
+              <span className={styles.factKey}>Async</span>
+              <span>collaborating with teams around the world</span>
             </li>
             <li>
-              📈 <strong>Eye for growth</strong> and the need to build for scale
+              <span className={styles.factKey}>Scale</span>
+              <span>an eye for growth and building to last</span>
             </li>
           </ul>
 
           <div className={styles.actions}>
             <a className={styles.ctaPrimary} href="#work">
-              See the work <span aria-hidden="true">👇</span>
+              See the work <span aria-hidden="true">↓</span>
             </a>
-          </div>
-
-          <div className={styles.badges}>
-            <a className={styles.badge} href="mailto:ashleyquigley14@gmail.com">
-              📧 ashleyquigley14@gmail.com
-            </a>
-            <a
-              className={styles.badge}
-              href="https://www.linkedin.com/in/ashquigs/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              🔗 LinkedIn
+            <a className={styles.ctaGhost} href="mailto:ashleyquigley14@gmail.com">
+              Say hello
             </a>
           </div>
         </div>
 
-        <div className={styles.visualCol}>
-          <div className={styles.phone} aria-hidden="true">
-            <div className={styles.phoneNotch} />
-            <div className={styles.phoneStatus}>9:41</div>
-            <div className={styles.phoneScreen}>
-              <div className={styles.phoneAvatar}>AQ</div>
-              <p className={styles.phoneName}>Ashley Quigley</p>
-              <div className={styles.phoneTabs}>
-                <span className={styles.phoneTabActive}>Work</span>
-                <span className={styles.phoneTab}>Skills</span>
-                <span className={styles.phoneTab}>Contact</span>
-              </div>
-              <div className={styles.phoneCard}>
-                <div>
-                  <p className={styles.phoneCardTitle}>QuickBooks experimentation</p>
-                  <p className={styles.phoneCardMeta}>Intuit · APAC</p>
-                </div>
-                <span className={styles.phonePill}>+55%</span>
-              </div>
-              <div className={styles.phoneCard}>
-                <div>
-                  <p className={styles.phoneCardTitle}>Pricing components</p>
-                  <p className={styles.phoneCardMeta}>18 sites · 10 languages</p>
-                </div>
-                <span className={styles.phonePill}>Shipped</span>
-              </div>
-              <div className={styles.phoneCard}>
-                <div>
-                  <p className={styles.phoneCardTitle}>Template system</p>
-                  <p className={styles.phoneCardMeta}>Freelance agency</p>
-                </div>
-                <span className={styles.phonePill}>Scaled</span>
-              </div>
-            </div>
-            <div className={styles.phoneHomeBar} />
-          </div>
+        <div className={styles.artCol}>
+          <HeroArt />
         </div>
       </div>
     </header>
